@@ -8,9 +8,11 @@
 #include <stdio.h>
 
 #define WINDOW_WIDTH 1260
-#define WINDOW_HEIGHT 720
-#define OFFSET_X 360
-#define OFFSET_Y 20
+#define WINDOW_HEIGHT 680
+#define X_CENTERED (WINDOW_WIDTH / 2)
+#define Y_CENTERED (WINDOW_HEIGTH / 2)
+#define OFFSET_X 20
+#define OFFSET_Y 0
 
 typedef struct SDL_Instance
 {
@@ -34,6 +36,16 @@ enum KeyPressSurfaces
 
 
 int init_instance(SDL_Instance *);
-void init_terrain_2d(SDL_Instance instance);
+/*DRAWING A 2D SQUARE*/
+void draw_square2D(SDL_Instance instance, int off_x, int off_y, int delta);
+void draw_square3D(SDL_Instance instance, int off_x, int off_y, int delta, int z);
+
+/*DRAWING A 2D GRID WITH LINES*/
+void init_terrain_2d(SDL_Instance instance, int **grid_x, int **grid_y, int rows, int cols);
+
+/*FUNCTION TO CREATE A ARRAY OF CORDINATES*/
+int **alloc_grid(int width, int heigth);
+void print_grid(int **grid, int width, int height);
+int **insert_points(int rows, int cols, char c);
 
 #endif

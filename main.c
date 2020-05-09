@@ -2,13 +2,28 @@
 
 int main(void)
 {
-	SDL_Instance instance;
+    int **grid_x;
+    int **grid_y;
+    int rows, cols = 0;
+    SDL_Instance instance;
 
 	if (init_instance(&instance) != 0)
 		return (1);
 
 	bool quit = false;
 	SDL_Event e;
+
+    rows = 2;
+    cols = 2;
+
+    grid_x = insert_points(rows, cols, 'x');
+    grid_y = insert_points(rows, cols, 'y');
+
+    printf("Coord en X\n");
+    print_grid(grid_x, rows, cols);
+    printf("\n");
+    printf("Coord en Y\n");
+    print_grid(grid_y, rows, cols);
 
 	while (!quit)
 	{
@@ -38,14 +53,15 @@ int main(void)
 		//Clear screen 
 		SDL_SetRenderDrawColor(instance.renderer, 0, 0, 0, 0);
 		SDL_RenderClear(instance.renderer);
-		/* DIBUJAMOS ALGO EN EL LIENZO DEBAJO DE ESTA LINEA*/
+		//DIBUJAMOS ALGO EN EL LIENZO DEBAJO DE ESTA LINEA
 		
-		init_terrain_2d(instance);
+		init_terrain_2d(instance, grid_x, grid_y, rows, cols);
 
 		SDL_RenderPresent(instance.renderer);
 
 	}
 	SDL_DestroyWindow(instance.window);
 	SDL_Quit();
+ 
 	return (0);
 }

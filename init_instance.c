@@ -12,8 +12,8 @@ int init_instance(SDL_Instance * instance)
 	}
 
 	/* CREAR INSTANCIA DE NUEVA VENTANA*/
-	instance->window = SDL_CreateWindow("Raise the terrain   by:Pipe \\o/", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1260, 720, 0);
-	if (instance->window == NULL)
+    instance->window = SDL_CreateWindow("Raise the terrain   by:Pipe \\o/", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
+    if (instance->window == NULL)
 	{
 		fprintf(stderr, "SDL_CreateWindow Error: %s", SDL_GetError());
 		SDL_Quit();
